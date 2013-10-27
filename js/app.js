@@ -38,10 +38,17 @@ App.SignupController = Ember.Controller.extend({
                 email: this.get('email'),
                 pwhash: this.get('hashedPw').toString()
             }
-            console.log(JSON.stringify(obj));
+            Ember.$.ajax({
+                url: 'http://localhost:5000/api/1/signup',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(obj),
+                success: function(res) {
+                    console.log(res);
+                }
+            });
         }
     }
-
 });
 
 /****************************
